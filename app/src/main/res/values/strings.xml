@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">通讯录的英雄们</string>
+    <string name="app_version">0.0.10.1_beta</string>
+    <string name="action_settings">关于</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">俄罗斯娜娜语音包</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="recovery">恢复了力气和手段</string>
+    <string name="button1">俄罗斯娜娜大贝塔</string>
+    <string name="button2">我不拉黑你</string>
+    <string name="button3">安琪拉你唱吧</string>
+    <string name="button4">我的名字好听吗</string>
+    <string name="button5">你的妈生下你失败</string>
+    <string name="button6">你凭啥这样说我</string>
+    <string name="button7">你妈鼓鼓的</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="music">音乐</string>
+    <string name="profile">关于</string>
+    <string name="home">主页</string>
+    <string name="stop">停</string>
+    <string name="toolbar">Toolbar</string>
+    <string name="button8">把你的幸福建立在别人的痛苦之上</string>
+    <string name="button9">我唱歌有错吗</string>
+    <string name="button10">吃了没事头被门挤了吗</string>
+    <string name="button11">跟你妈妈一样，你妈妈是什么我就是什么</string>
+    <string name="button12">说过一个脏字吗</string>
+    <string name="button13">烦死了一天</string>
+    <string name="button14">不要来攻击我</string>
+    <string name="button15">跟你爸爸妈妈一起合唱</string>
+    <string name="button16">吃狗屎</string>
+    <string name="button17">谁不圈钱</string>
+    <string name="button18">你配吗</string>
+    <string name="button19">年纪轻轻八十岁</string>
+    <string name="button20">拱出去</string>
+    <string name="button21">难受去学习</string>
+    <string name="button22">你不正常我不凶你吗</string>
+    <string name="button23">嚼舌根的人</string>
+    <string name="button24">不喜欢你这种语言</string>
+    <string name="button25">爸妈给你钱读书</string>
+    <string name="button26">举报了一个人</string>
+    <string name="button27">爸爸妈妈圈米</string>
+    <string name="button28">回家看看臭贝塔</string>
+    <string name="button29">不要这样说话</string>
+    <string name="button30">你的奶奶怀孕了吗</string>
+    <string name="button31">哪一句话有低俗</string>
+    <string name="button32">你妈妈被他弄了</string>
+    <string name="button33">永远会越战越勇</string>
+    <string name="button34">你妈妈生孩子</string>
+    <string name="button35">妈妈是你最好的老师</string>
+    <string name="button36">立刻举报你</string>
+    <string name="button37">想怀孕自己怀</string>
+
+    <string name="app_introduce">通讯录英雄语音包大集合。娜娜语音包来源@倾鹿 ，后续英雄正在开发中。作者一直在努力改进这款应用，欢迎随时投稿，提交bug。</string>
+    <string name="picture">美图</string>
+    <string name="sister">开心姐</string>
+    <string name="navigation_drawer_open">打开侧边栏</string>
+    <string name="navigation_drawer_close">关闭侧边栏</string>
+    <string name="nana">俄罗斯娜娜</string>
+    <string name="nanasong2">大贝塔-DJ版</string>
+    <string name="nanasong1">贝如塔1.3</string>
+    <string name="cangjb">藏举霸</string>
+    <string name="recover">恢复了力气和手段</string>
+    <string name="stopaudio">停止播放</string>
+    <string name="nanasong">贝塔系列音乐</string>
+    <string name="button38">你懂艺术吗</string>
+    <string name="button39">必须给我道歉</string>
+    <string name="button40">你看不见吗</string>
+    <string name="button41">给娜姐打一波砰砰砰</string>
+    <string name="lose">失去了力气和手段</string>
+    <string name="bepolite">骂人骂的文明点</string>
+    <string name="youngman">得到你们年轻人的关注</string>
+    <string name="babynofighting">不和你们吵架了\n</string>
+    <string name="baby">宝贝们</string>
+    <string name="search">输入你想搜索的内容</string>
+    <string name="menu">侧边栏</string>
+    <string name="nanasing">来自娜娜的吟唱</string>
+    <string name="lovelikefirehead">爱如火_开头</string>
+    <string name="lovelikefiremain">爱如火_副歌</string>
+    <string name="dogbite">不管骂什么当狗咬</string>
+    <string name="goaway">拱出去拱得远远地</string>
+    <string name="oldpersonsmell">和你妈一样有老人味</string>
+    <string name="awomarenlema">啊我骂人了吗</string>
+    <string name="bazijixiandehaogaodangyiyang">把自己显得好高大上一样</string>
+    <string name="bierenshuonishule">别人说你鼠了</string>
+    <string name="buhezaoyaotongliuhewu">不和造谣同流合污</string>
+    <string name="geitalianmianbuyaolian">给他脸面不要脸</string>
+    <string name="guzilijiubuhuigennimentongliuhewu">骨子里就不会跟你们同流合污</string>
+    <string name="mayanimayamalelannidezui">骂呀你骂呀骂了烂你的嘴</string>
+    <string name="mayazenmebuganlaimale">骂呀怎么不敢来骂了</string>
+
+
+</resources>

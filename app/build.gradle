@@ -1,0 +1,56 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+android {
+    namespace 'com.tutupai.nana'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.tutupai.nana"
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.1.1"
+    }
+}
+
+dependencies {
+
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation "androidx.compose.material3:material3:1.2.1"
+    implementation "androidx.compose.material3:material3-window-size-class:1.2.1"
+    implementation "androidx.compose.material3:material3-adaptive-navigation-suite:1.3.0-beta01"
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+    implementation libs.immersionbar
+    implementation libs.immersionbar.ktx
+    implementation libs.immersionbar.components
+    implementation libs.appcompat
+    implementation libs.constraintlayout
+    implementation libs.navigation.fragment
+    implementation libs.navigation.ui
+    implementation libs.preference
+    implementation libs.activity
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
