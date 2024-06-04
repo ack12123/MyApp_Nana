@@ -1,5 +1,9 @@
 package com.tutupai.nana;
 
+import static androidx.compose.ui.semantics.SemanticsPropertiesKt.collapse;
+
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,8 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
+import android.view.animation.AnticipateOvershootInterpolator;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -24,16 +29,29 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 
 import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class FirstFragment extends Fragment {
 
     private MediaPlayer mediaPlayer;
+
+    public static class ButtonAudioPair {
+        private final int buttonTextResId;
+        private final int audioResId;
+
+        public ButtonAudioPair(int buttonTextResId, int audioResId) {
+            this.buttonTextResId = buttonTextResId;
+            this.audioResId = audioResId;
+        }
+
+        public int getButtonTextResId() {
+            return buttonTextResId;
+        }
+
+        public int getAudioResId() {
+            return audioResId;
+        }
+    }
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -60,88 +78,16 @@ public class FirstFragment extends Fragment {
         setupToggleTextView(view.findViewById(R.id.toggle_button_lose), buttonLose, dividerLose, R.string.lose, R.string.lose);
         setupToggleTextView(view.findViewById(R.id.toggle_button_nanasing), buttonNanaSing, dividerSing, R.string.nanasing, R.string.nanasing);
 
-        // 按钮和对应音频资源的配对 - toggle_button_recover
-        List<ButtonAudioPair> recoverButtonAudioPairs = new ArrayList<>();
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button2, R.raw.wbl));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button3, R.raw.anqila));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button4, R.raw.myname));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button5, R.raw.bigfail));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button6, R.raw.nps));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button7, R.raw.ymom));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button8, R.raw.xftk));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button9, R.raw.signbad));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button10, R.raw.eatdoor));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button11, R.raw.wym));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button12, R.raw.dirty));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button13, R.raw.annoy));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button14, R.raw.dam));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button15, R.raw.contata));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button16, R.raw.eatshit));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button17, R.raw.makemoney));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button18, R.raw.deserve));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button19, R.raw.eightyyears));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button20, R.raw.gun));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button21, R.raw.study));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button22, R.raw.notnormal));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button23, R.raw.tongue));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button24, R.raw.dontlike));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button25, R.raw.yfmrb));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button26, R.raw.report));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button27, R.raw.fammm));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button28, R.raw.gohome));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button29, R.raw.dsp));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button30, R.raw.grandma));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button31, R.raw.vulgar));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button32, R.raw.ymbtn));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button33, R.raw.battle));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button34, R.raw.bornbaby));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button35, R.raw.umbt));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button36, R.raw.reportaon));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button37, R.raw.wantchild));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button38, R.raw.knowart));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button39, R.raw.mustapologise));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button40, R.raw.cantlook));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.button41, R.raw.nappp));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.dogbite, R.raw.dogbite));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.goaway, R.raw.goaway));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.oldpersonsmell, R.raw.oldpersonsmell));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.awomarenlema, R.raw.awomarenlema));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.bazijixiandehaogaodangyiyang, R.raw.bazijixiandehaogaodangyiyang));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.bierenshuonishule, R.raw.bierenshuonishule));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.buhezaoyaotongliuhewu, R.raw.buhezaoyaotongliuhewu));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.geitalianmianbuyaolian, R.raw.geitalianmianbuyaolian));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.guzilijiubuhuigennimentongliuhewu, R.raw.guzilijiubuhuigennimentongliuhewu));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.mayanimayamalelannidezui, R.raw.mayanimayamalelannidezui));
-        recoverButtonAudioPairs.add(new ButtonAudioPair(R.string.mayazenmebuganlaimale, R.raw.mayazenmebuganlaimale));
+        // 获取按钮-音频配对列表
+        List<ButtonAudioPair> recoverButtonAudioPairs = ButtonAudioPairFactory.createRecoverButtonAudioPairs();
+        List<ButtonAudioPair> loseButtonAudioPairs = ButtonAudioPairFactory.createLoseButtonAudioPairs();
+        List<ButtonAudioPair> nanaSongButtonAudioPairs = ButtonAudioPairFactory.createNanaSongButtonAudioPairs();
+        List<ButtonAudioPair> nanaSingButtonAudioPairs = ButtonAudioPairFactory.createNanaSingButtonAudioPairs();
 
-        // 按钮和对应音频资源的配对 - toggle_button_lose
-        List<ButtonAudioPair> loseButtonAudioPairs = new ArrayList<>();
-        loseButtonAudioPairs.add(new ButtonAudioPair(R.string.bepolite, R.raw.bepolite));
-        loseButtonAudioPairs.add(new ButtonAudioPair(R.string.youngman, R.raw.youngman));
-        loseButtonAudioPairs.add(new ButtonAudioPair(R.string.babynofighting, R.raw.babynofighting));
-        loseButtonAudioPairs.add(new ButtonAudioPair(R.string.baby, R.raw.baby));
-
-        // 按钮和对应音频资源的配对 - toggle_button_nanasong
-        List<ButtonAudioPair> nanaSongButtonAudioPairs = new ArrayList<>();
-        nanaSongButtonAudioPairs.add(new ButtonAudioPair(R.string.nanasong1, R.raw.bigbeta));
-        nanaSongButtonAudioPairs.add(new ButtonAudioPair(R.string.nanasong2, R.raw.bigbeta_dj));
-        nanaSongButtonAudioPairs.add(new ButtonAudioPair(R.string.cangjb, R.raw.cangjb));
-
-        // 按钮和对应音频资源的配对 - toggle_button_nanasing
-        List<ButtonAudioPair> nanaSingButtonAudioPairs = new ArrayList<>();
-        nanaSingButtonAudioPairs.add(new ButtonAudioPair(R.string.lovelikefirehead, R.raw.lovelikefirehead));
-        nanaSingButtonAudioPairs.add(new ButtonAudioPair(R.string.lovelikefiremain, R.raw.lovelikefiremain));
-
-        // 动态添加按钮到 buttonContainer
+        // 动态添加按钮到各自的容器
         addButtonsToContainer(buttonContainer, recoverButtonAudioPairs);
-
-        // 动态添加按钮到 buttonNanaSong
         addButtonsToContainer(buttonNanaSong, nanaSongButtonAudioPairs);
-
-        // 动态添加按钮到 buttonNanaSing
         addButtonsToContainer(buttonNanaSing, nanaSingButtonAudioPairs);
-
-        // 动态添加按钮到 buttonLose
         addButtonsToContainer(buttonLose, loseButtonAudioPairs);
 
         // 找到 ExtendedFloatingActionButton
@@ -195,12 +141,8 @@ public class FirstFragment extends Fragment {
                 v.requestLayout();
             }
         });
-
-        // 在这里使用不同的插值器
-        animator.setInterpolator(new AccelerateInterpolator());
-
-        // 尝试不同的持续时间
-        animator.setDuration(500); // 根据需要调整持续时间
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setDuration((int) (targetHeight / v.getContext().getResources().getDisplayMetrics().density) / 2); // 减少持续时间
         animator.start();
     }
 
@@ -219,12 +161,8 @@ public class FirstFragment extends Fragment {
                 }
             }
         });
-
-        // 在这里使用不同的插值器
-        animator.setInterpolator(new DecelerateInterpolator());
-
-        // 尝试不同的持续时间
-        animator.setDuration(500); // 根据需要调整持续时间
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density) / 2); // 减少持续时间
         animator.start();
     }
 
@@ -254,7 +192,7 @@ public class FirstFragment extends Fragment {
     private void addButtonsToContainer(FlexboxLayout container, List<ButtonAudioPair> buttonAudioPairs) {
         for (ButtonAudioPair pair : buttonAudioPairs) {
             MaterialButton button = new MaterialButton(requireActivity(), null, com.google.android.material.R.attr.materialButtonStyle);
-            button.setText(pair.buttonText);
+            button.setText(pair.buttonTextResId);
             button.setTextColor(getResources().getColor(R.color.my_button_text_color));
 
             // 设置按钮的LayoutParams
@@ -271,108 +209,6 @@ public class FirstFragment extends Fragment {
                 }
             });
             container.addView(button);
-        }
-    }
-
-    public void searchButton(String keyword) {
-        Log.d("FirstFragment", "Received search keyword: " + keyword);
-
-        ArrayList<Button> buttons = getAllButtonsInFragment();
-
-        for (Button button : buttons) {
-            if (button.getText().toString().contains(keyword)) {
-                Log.d("FirstFragment", "Button with text \"" + button.getText() + "\" contains the keyword \"" + keyword + "\". Showing button.");
-                // 如果按钮的文本包含搜索关键词，就显示这个按钮
-                showButton(button);
-            } else {
-                Log.d("FirstFragment", "Button with text \"" + button.getText() + "\" does not contain the keyword \"" + keyword + "\". Hiding button.");
-                // 否则，隐藏这个按钮
-                hideButton(button);
-            }
-        }
-    }
-
-
-    private void findButtonsInCardViews(View view, ArrayList<Button> buttons) {
-        if (view instanceof Button) {
-            buttons.add((Button) view);
-        } else if (view instanceof CardView) {
-            CardView cardView = (CardView) view;
-            ViewGroup cardViewContent = (ViewGroup) cardView.getChildAt(0); // Assuming the button is the first child of CardView
-
-            for (int i = 0; i < cardViewContent.getChildCount(); i++) {
-                findButtonsInCardViews(cardViewContent.getChildAt(i), buttons);
-            }
-        } else if (view instanceof ViewGroup) {
-            ViewGroup viewGroup = (ViewGroup) view;
-
-            for (int i = 0; i < viewGroup.getChildCount(); i++) {
-                findButtonsInCardViews(viewGroup.getChildAt(i), buttons);
-            }
-        }
-    }
-
-
-    public interface OnSearchListener {
-        void onSearch(String keyword);
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context); // 必须调用父类的方法
-
-        if (context instanceof OnSearchListener) {
-            OnSearchListener onSearchListener = (OnSearchListener) context; // 将 context 强制转换为 OnSearchListener
-        } else {
-            throw new RuntimeException(context.toString() + " must implement OnSearchListener");
-        }
-    }
-
-    private ArrayList<Button> getAllButtonsInFragment() {
-        ArrayList<Button> buttons = new ArrayList<>();
-
-        // 获取 FirstFragment 的根视图
-        View rootView = getView();
-
-        if (rootView != null) {
-            // 递归地找到所有的按钮
-            findButtonsInCardViews(rootView, buttons);
-        }
-
-        return buttons;
-    }
-
-
-    private void findButtons(View view, ArrayList<Button> buttons) {
-        if (view instanceof Button) {
-            buttons.add((Button) view);
-        } else if (view instanceof ViewGroup) {
-            ViewGroup viewGroup = (ViewGroup) view;
-
-            for (int i = 0; i < viewGroup.getChildCount(); i++) {
-                findButtons(viewGroup.getChildAt(i), buttons);
-            }
-        }
-    }
-
-    private void showButton(Button button) {
-        // 将按钮设置为可见
-        button.setVisibility(View.VISIBLE);
-    }
-
-    private void hideButton(Button button) {
-        // 将按钮设置为不可见
-        button.setVisibility(View.GONE);
-    }
-
-
-    private static class ButtonAudioPair {
-        final int buttonText;
-        final int audioResId;
-
-        ButtonAudioPair(int buttonText, int audioResId) {
-            this.buttonText = buttonText;
-            this.audioResId = audioResId;
         }
     }
 }

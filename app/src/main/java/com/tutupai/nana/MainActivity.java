@@ -19,7 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.tutupai.nana.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements FirstFragment.OnSearchListener {
+public class MainActivity extends AppCompatActivity {
     private FirstFragment firstFragment;
 
 
@@ -53,26 +53,6 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnS
 
         // 获取 FirstFragment 的实例
         firstFragment = (FirstFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-
-        // 设置搜索框的监听器
-        searchInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // 当用户输入文字时，调用 FirstFragment 中的搜索按钮方法，并传递搜索关键词
-                Log.d("MainActivity", "Search keyword: " + charSequence.toString());
-                if (firstFragment != null) {
-                    firstFragment.searchButton(charSequence.toString());
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {}
-        });
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -130,14 +110,6 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnS
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, new FirstFragment())
                     .commit();
-        }
-    }
-
-
-    @Override
-    public void onSearch(String keyword) {
-        if (firstFragment != null) {
-            firstFragment.searchButton(keyword);
         }
     }
 }
