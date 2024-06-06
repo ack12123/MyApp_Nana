@@ -26,7 +26,13 @@
         </activity>
 
         <activity
-            android:name=".NAPhoto"
+            android:name=".NanaSong"
+            android:exported="true"
+            android:theme="@style/Theme.MyApp">
+        </activity>
+
+        <activity
+            android:name=".NanaLose"
             android:exported="true"
             android:theme="@style/Theme.MyApp">
         </activity>

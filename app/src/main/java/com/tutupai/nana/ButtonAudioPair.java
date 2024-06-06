@@ -1,11 +1,21 @@
 package com.tutupai.nana;
 
-public class ButtonAudioPair {
-    public int buttonText;
-    public int audioResId;
+public class ButtonAudioPair implements ButtonAudioPairInterface {
+    private final int buttonTextResId;
+    private final int audioResId;
 
-    public ButtonAudioPair(int buttonText, int audioResId) {
-        this.buttonText = buttonText;
+    public ButtonAudioPair(int buttonTextResId, int audioResId) {
+        this.buttonTextResId = buttonTextResId;
         this.audioResId = audioResId;
+    }
+
+    @Override
+    public int getButtonTextResId() {
+        return buttonTextResId;
+    }
+
+    @Override
+    public int getAudioResId() {
+        return audioResId;
     }
 }

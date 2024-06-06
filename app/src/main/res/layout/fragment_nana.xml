@@ -3,234 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- 容器1 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/main"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="6dp">
-
-                    <TextView
-                        android:id="@+id/toggle_button_textview"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:padding="10dp"
-                        android:text="@string/recover"
-                        android:textSize="20sp" />
-
-                    <View
-                        android:id="@+id/divider_recover"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/darker_gray"
-                        android:visibility="invisible"/>
-
-                    <com.google.android.flexbox.FlexboxLayout
-                        android:id="@+id/button_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:alignContent="stretch"
-                        app:alignItems="stretch"
-                        app:flexWrap="wrap"
-                        app:justifyContent="flex_start">
-
-                    </com.google.android.flexbox.FlexboxLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- 容器2 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/main"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="6dp">
-
-                    <TextView
-                        android:id="@+id/toggle_button_lose"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:padding="10dp"
-                        android:text="@string/lose"
-                        android:textSize="20sp" />
-
-                    <View
-                        android:id="@+id/divider_lose"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/darker_gray"
-                        android:visibility="invisible"/>
-
-                    <com.google.android.flexbox.FlexboxLayout
-                        android:id="@+id/button_lose"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:alignContent="stretch"
-                        app:alignItems="stretch"
-                        app:flexWrap="wrap"
-                        app:justifyContent="flex_start">
-
-                    </com.google.android.flexbox.FlexboxLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- 容器3 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/main"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="6dp">
-
-                    <TextView
-                        android:id="@+id/toggle_button_nanasing"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:padding="10dp"
-                        android:text="@string/nanasing"
-                        android:textSize="20sp" />
-
-                    <View
-                        android:id="@+id/divider_sing"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/darker_gray"
-                        android:visibility="invisible"/>
-
-                    <com.google.android.flexbox.FlexboxLayout
-                        android:id="@+id/button_nanasing"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:alignContent="stretch"
-                        app:alignItems="stretch"
-                        app:flexWrap="wrap"
-                        app:justifyContent="flex_start">
-
-                    </com.google.android.flexbox.FlexboxLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- 容器4 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/main"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="6dp">
-
-                    <TextView
-                        android:id="@+id/toggle_button_nanasong"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:padding="10dp"
-                        android:text="@string/nanasong"
-                        android:textSize="20sp" />
-
-                    <View
-                        android:id="@+id/divider_song"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/darker_gray"
-                        android:visibility="invisible"/>
-
-                    <com.google.android.flexbox.FlexboxLayout
-                        android:id="@+id/button_nanasong"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:alignContent="stretch"
-                        app:alignItems="stretch"
-                        app:flexWrap="wrap"
-                        app:justifyContent="flex_start">
-                        <!-- 按钮添加到这里 -->
-                    </com.google.android.flexbox.FlexboxLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
+            android:scrollbars="vertical" />
 
     </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stopaudio"
-        android:textColor="@color/cardview_dark_background"
-        app:backgroundTint="@color/OnPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="50dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

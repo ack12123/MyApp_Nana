@@ -3,13 +3,13 @@
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/ic_home"
-        android:title="@string/home" />
+        android:title="@string/recovery" />
     <item
         android:id="@+id/action_photo"
         android:icon="@drawable/ic_photo"
-        android:title="@string/picture" />
+        android:title="@string/lose" />
     <item
         android:id="@+id/action_profile"
-        android:icon="@drawable/ic_person"
-        android:title="@string/profile" />
+        android:icon="@drawable/ic_music"
+        android:title="@string/song" />
 </menu>

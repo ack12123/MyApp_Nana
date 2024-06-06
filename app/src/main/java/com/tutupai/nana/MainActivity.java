@@ -1,9 +1,6 @@
 package com.tutupai.nana;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -15,13 +12,17 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.tutupai.nana.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private FirstFragment firstFragment;
-
+    private ViewPager2 viewPager;
+    private MyFragmentStateAdapter pagerAdapter;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,18 @@ public class MainActivity extends AppCompatActivity {
         // 使用binding来设置ContentView
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // 初始化ViewPager2和Adapter
+        viewPager = findViewById(R.id.viewPager);
+        pagerAdapter = new MyFragmentStateAdapter(this);
+
+        // 添加Fragments到Adapter
+        pagerAdapter.addFragment(new FirstFragment());
+        pagerAdapter.addFragment(new NanaLose());
+        pagerAdapter.addFragment(new NanaSong());
+
+        viewPager.setAdapter(pagerAdapter);
+
 
         // 检查深色模式
         int nightModeFlags = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
@@ -83,33 +96,36 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 设置BottomNavigationView
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation); // 确保这里的ID与布局文件中的ID匹配
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-
                 int itemId = item.getItemId();
                 if (itemId == R.id.action_home) {
-                    selectedFragment = new FirstFragment();
-                    firstFragment = (FirstFragment) selectedFragment;
+                    viewPager.setCurrentItem(0);
+                    return true;
                 } else if (itemId == R.id.action_photo) {
-                    selectedFragment = new NAPhoto();
+                    viewPager.setCurrentItem(1);
+                    return true;
                 } else if (itemId == R.id.action_profile) {
-                    selectedFragment = new About();
+                    viewPager.setCurrentItem(2);
+                    return true;
                 }
-                if (selectedFragment != null) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-                }
-                return true;
+                return false;
+            }
+        });
+
+        // 设置ViewPager2的页面切换监听器
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
             }
         });
 
         // 默认显示第一个Fragment
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, new FirstFragment())
-                    .commit();
+            viewPager.setCurrentItem(0);
         }
     }
 }
