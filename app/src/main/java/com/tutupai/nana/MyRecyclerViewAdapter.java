@@ -1,11 +1,13 @@
 package com.tutupai.nana;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
@@ -14,13 +16,13 @@ import java.util.List;
 
 class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
-    private final List<ButtonAudioPairInterface> mData;
+    private List<ButtonAudioPairInterface> mData;
     private final LayoutInflater mInflater;
     private final AudioPlayer audioPlayer;
 
     // data is passed into the constructor
-    MyRecyclerViewAdapter(AudioPlayer audioPlayer, List<ButtonAudioPairInterface> data) {
-        this.mInflater = LayoutInflater.from(((Fragment) audioPlayer).getContext());
+    MyRecyclerViewAdapter(Context context, AudioPlayer audioPlayer, List<ButtonAudioPairInterface> data) {
+        this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.audioPlayer = audioPlayer;
     }
@@ -64,5 +66,12 @@ class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.V
             super(itemView);
             myButton = itemView.findViewById(R.id.btn_item);
         }
+    }
+
+    // 添加 setData 方法以更新数据
+    @SuppressLint("NotifyDataSetChanged")
+    public void setData(List<ButtonAudioPairInterface> newData) {
+        this.mData = newData;
+        notifyDataSetChanged();
     }
 }

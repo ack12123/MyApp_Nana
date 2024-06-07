@@ -77,7 +77,8 @@ public class NanaSong extends Fragment implements MyRecyclerViewAdapter.AudioPla
             int space = 16;
             recyclerViewSing.addItemDecoration(new SpacesItemDecoration(space));
 
-            MyRecyclerViewAdapter adapterSing = new MyRecyclerViewAdapter(this, buttonAudioPairsSing);
+            MyRecyclerViewAdapter adapterSing = new MyRecyclerViewAdapter(getContext(), this, buttonAudioPairsSing);
+
             recyclerViewSing.setAdapter(adapterSing);
         }
 
@@ -92,7 +93,7 @@ public class NanaSong extends Fragment implements MyRecyclerViewAdapter.AudioPla
             int space = 16;
             recyclerViewSong.addItemDecoration(new SpacesItemDecoration(space));
 
-            MyRecyclerViewAdapter adapterSong = new MyRecyclerViewAdapter(this, buttonAudioPairsSong);
+            MyRecyclerViewAdapter adapterSong = new MyRecyclerViewAdapter(getContext(), this, buttonAudioPairsSong);
             recyclerViewSong.setAdapter(adapterSong);
         }
 
@@ -107,7 +108,7 @@ public class NanaSong extends Fragment implements MyRecyclerViewAdapter.AudioPla
             int space = 16;
             recyclerViewAI.addItemDecoration(new SpacesItemDecoration(space));
 
-            MyRecyclerViewAdapter adapterAI = new MyRecyclerViewAdapter(this, buttonAudioPairsAI);
+            MyRecyclerViewAdapter adapterAI = new MyRecyclerViewAdapter(getContext(), this, buttonAudioPairsAI);
             recyclerViewAI.setAdapter(adapterAI);
         }
     }

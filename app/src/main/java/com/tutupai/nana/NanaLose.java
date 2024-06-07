@@ -1,12 +1,12 @@
 package com.tutupai.nana;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -38,7 +38,6 @@ public class NanaLose extends Fragment implements MyRecyclerViewAdapter.AudioPla
         }
     }
 
-    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_lose, container, false);
@@ -66,7 +65,7 @@ public class NanaLose extends Fragment implements MyRecyclerViewAdapter.AudioPla
             int space = 16; // 设置间距大小
             recyclerView.addItemDecoration(new SpacesItemDecoration(space));
 
-            MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, buttonAudioPairs);
+            MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(getContext(), this, buttonAudioPairs);
             recyclerView.setAdapter(adapter);
         }
     }

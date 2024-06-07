@@ -2,12 +2,26 @@
 <resources>
 
     <style name="Base.Theme.MyApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/main</item>
+        <item name="colorPrimaryVariant">@color/main_dark_800</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="android:navigationBarColor">@color/main</item>
+        <item name="android:textColorSecondary">@color/secondary</item>
+    </style>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/OnPrimary</item>
+    </style>
+
+    <style name="AppThemeSearch" parent="Theme.Material3.DayNight.NoActionBar">
 
         <item name="colorPrimary">@color/main</item>
         <item name="colorPrimaryVariant">@color/main_dark_800</item>
+        <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/secondary</item>
+        <item name="android:navigationBarColor">@color/secondary</item>
 
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
 </resources>

@@ -283,4 +283,17 @@ public class ButtonAudioPairFactory {
         buttonAudioPairs.add(new ButtonAudioPair(R.string.xihaiqingge, R.raw.xihaiqingge));
         return buttonAudioPairs;
     }
+
+    public static List<ButtonAudioPairInterface> getAllButtons() {
+        List<ButtonAudioPairInterface> allButtons = new ArrayList<>();
+
+        allButtons.addAll(createRecoverButtonAudioPairs());
+        allButtons.addAll(createLoseButtonAudioPairs());
+        allButtons.addAll(createNanaSingButtonAudioPairs());
+        allButtons.addAll(createNanaSongButtonAudioPairs());
+        allButtons.addAll(createNanaAIButtonAudioPairs());
+
+        return allButtons;
+    }
+
 }

@@ -1,4 +1,4 @@
-<FrameLayout
+﻿<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -42,35 +42,23 @@
                         android:background="@color/main"
                         android:padding="8dp">
 
-                        <ImageButton
-                            android:id="@+id/menu_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:background="@android:color/transparent"
-                            android:contentDescription="@string/menu"
-                            android:src="@drawable/ic_menu"
-                            android:theme="@style/Theme.MyApp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/search_input"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginEnd="8dp"
                             android:background="@android:color/transparent"
                             android:hint="@string/search"
-                            android:textSize="20sp"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"
                             android:paddingStart="50dp"
+                            android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.777"
-                            app:layout_constraintStart_toEndOf="@id/menu_icon"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.545"
+                            app:layout_constraintVertical_bias="0.0"
                             tools:ignore="MissingConstraints,RtlSymmetry" />
-
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -83,13 +71,26 @@
                     android:layout_height="match_parent"
                     android:layout_below="@id/search_card"
                     android:layout_marginTop="16dp"
-                    android:layout_above="@id/bottom_navigation"
-                    android:layout_marginBottom="0dp" >
+                    android:layout_marginBottom="0dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
 
-                    <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/viewPager"
+                    <ScrollView
+                        android:id="@+id/scrollView"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvButtons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="vertical" />
+
+                    </ScrollView>
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/fab"
@@ -104,24 +105,8 @@
 
                 </FrameLayout>
 
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/bottom_navigation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="-1dp"
-                    android:background="?attr/colorPrimary"
-                    app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
-                    app:menu="@menu/bottom_navigation_menu" />
-
             </RelativeLayout>
 
-            <com.google.android.material.navigation.NavigationView
-                android:id="@+id/nav_view"
-                android:layout_width="180dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                app:menu="@menu/navigation_menu" />
 
         </androidx.drawerlayout.widget.DrawerLayout>
 

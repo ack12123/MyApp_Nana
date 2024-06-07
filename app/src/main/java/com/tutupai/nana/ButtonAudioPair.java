@@ -10,6 +10,12 @@ public class ButtonAudioPair implements ButtonAudioPairInterface {
     }
 
     @Override
+    public String getButtonText() {
+        // 这个方法将返回资源ID的字符串表示，用于调试或日志记录
+        return Integer.toString(buttonTextResId);
+    }
+
+    @Override
     public int getButtonTextResId() {
         return buttonTextResId;
     }

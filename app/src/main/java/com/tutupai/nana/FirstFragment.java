@@ -1,16 +1,17 @@
 package com.tutupai.nana;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
@@ -37,7 +38,6 @@ public class FirstFragment extends Fragment implements MyRecyclerViewAdapter.Aud
         }
     }
 
-    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_nana, container, false);
@@ -58,22 +58,14 @@ public class FirstFragment extends Fragment implements MyRecyclerViewAdapter.Aud
             recyclerView.setLayoutManager(layoutManager);
             int space = 16;
             recyclerView.addItemDecoration(new SpacesItemDecoration(space));
-            MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, buttonAudioPairs);
+            MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(getContext(), this, buttonAudioPairs);
             recyclerView.setAdapter(adapter);
         }
 
-        // 添加 RecyclerView 的滚动监听器
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-
-                // 检测滑动方向并应用动画
-                if (dx > 0) { // 向右滑动
-                    AnimationUtils.applySlideInAnimation(recyclerView, AnimationUtils.AnimationDirection.RIGHT);
-                } else if (dx < 0) { // 向左滑动
-                    AnimationUtils.applySlideInAnimation(recyclerView, AnimationUtils.AnimationDirection.LEFT);
-                }
             }
         });
     }

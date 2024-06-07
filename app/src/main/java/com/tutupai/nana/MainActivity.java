@@ -1,10 +1,13 @@
 package com.tutupai.nana;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private BottomNavigationView bottomNavigationView;
     private final List<MyRecyclerViewAdapter.AudioPlayer> audioPlayerFragments = new ArrayList<>();
-
+    private EditText searchInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,14 +65,19 @@ public class MainActivity extends AppCompatActivity {
         audioPlayerFragments.add(nanaLose);
         audioPlayerFragments.add(nanaSong);
 
-        EditText searchButton = findViewById(R.id.search_input);
+        TextView searchInput = findViewById(R.id.search_input);
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        // Set focus listener on search input to open new activity
+        searchInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Get the search text
                 String searchText = searchInput.getText().toString();
-                SearchNanaFragment fragment = SearchNanaFragment.newInstance(searchText);
-                openFragment(fragment);
+
+                // Start SearchNanaActivity
+                Intent intent = new Intent(MainActivity.this, SearchNanaActivity.class);
+                intent.putExtra("SEARCH_TEXT", searchText);
+                startActivity(intent);
             }
         });
 
