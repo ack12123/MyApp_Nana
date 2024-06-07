@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import com.tutupai.nana.FirstFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
@@ -28,6 +27,7 @@ class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.V
 
     interface AudioPlayer {
         void playAudioFromFragment(int audioResId);
+        void stopAudio();
     }
 
     // inflates the row layout from xml when needed

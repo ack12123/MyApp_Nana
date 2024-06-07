@@ -1,12 +1,12 @@
 package com.tutupai.nana;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -22,10 +22,19 @@ public class FirstFragment extends Fragment implements MyRecyclerViewAdapter.Aud
     private MediaPlayer mediaPlayer;
     private RecyclerView recyclerView;
     private List<ButtonAudioPairInterface> buttonAudioPairs;
+    private MainActivity mainActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MainActivity) {
+            mainActivity = (MainActivity) context;
+        }
     }
 
     @SuppressLint("MissingInflatedId")
@@ -37,34 +46,45 @@ public class FirstFragment extends Fragment implements MyRecyclerViewAdapter.Aud
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        // Only initialize data and setup RecyclerView if not already done
         if (buttonAudioPairs == null) {
             buttonAudioPairs = ButtonAudioPairFactory.createRecoverButtonAudioPairs();
         }
 
         if (recyclerView == null) {
             recyclerView = view.findViewById(R.id.rvButtons);
-
-            // ‰ΩøÁî® FlexboxLayoutManager
             FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getContext());
-            layoutManager.setFlexWrap(FlexWrap.WRAP); // ÂÖÅËÆ∏Êç¢Ë°å
-            layoutManager.setJustifyContent(JustifyContent.FLEX_START); // ÊåâËµ∑Âßã‰ΩçÁΩÆÊéíÂàó
+            layoutManager.setFlexWrap(FlexWrap.WRAP);
+            layoutManager.setJustifyContent(JustifyContent.FLEX_START);
             recyclerView.setLayoutManager(layoutManager);
-
-            // ËÆæÁΩÆËá™ÂÆö‰πâÁöÑ ItemDecoration
-            int space = 16; // ËÆæÁΩÆÈó¥Ë∑ùÂ§ßÂ∞è
+            int space = 16;
             recyclerView.addItemDecoration(new SpacesItemDecoration(space));
-
             MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, buttonAudioPairs);
             recyclerView.setAdapter(adapter);
         }
+
+        // ÃÌº” RecyclerView µƒπˆ∂Øº‡Ã˝∆˜
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                // ºÏ≤‚ª¨∂Ø∑ΩœÚ≤¢”¶”√∂Øª≠
+                if (dx > 0) { // œÚ”“ª¨∂Ø
+                    AnimationUtils.applySlideInAnimation(recyclerView, AnimationUtils.AnimationDirection.RIGHT);
+                } else if (dx < 0) { // œÚ◊Ûª¨∂Ø
+                    AnimationUtils.applySlideInAnimation(recyclerView, AnimationUtils.AnimationDirection.LEFT);
+                }
+            }
+        });
     }
 
     @Override
     public void playAudioFromFragment(int audioResId) {
         if (mediaPlayer != null) {
             mediaPlayer.release();
+        }
+        if (mainActivity != null) {
+            mainActivity.stopOtherFragmentsAudio(this);
         }
         mediaPlayer = MediaPlayer.create(getContext(), audioResId);
         mediaPlayer.setOnCompletionListener(MediaPlayer::release);
@@ -75,6 +95,15 @@ public class FirstFragment extends Fragment implements MyRecyclerViewAdapter.Aud
     public void onDestroyView() {
         super.onDestroyView();
         if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+    @Override
+    public void stopAudio() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
         }

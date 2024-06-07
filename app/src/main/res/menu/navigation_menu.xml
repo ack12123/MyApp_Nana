@@ -8,5 +8,13 @@
         android:id="@+id/action_sister"
         android:icon="@drawable/ic_person"
         android:title="@string/sister" />
+    <item
+        android:id="@+id/action_huyilian"
+        android:icon="@drawable/ic_person"
+        android:title="@string/huyilian" />
+    <item
+        android:id="@+id/action_shirouer"
+        android:icon="@drawable/ic_person"
+        android:title="@string/shirouer" />
 
 </menu>

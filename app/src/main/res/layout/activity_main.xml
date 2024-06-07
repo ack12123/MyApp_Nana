@@ -101,6 +101,7 @@
                         android:text="@string/stopaudio"
                         android:textColor="@color/cardview_dark_background"
                         app:backgroundTint="@color/OnPrimary" />
+
                 </FrameLayout>
 
                 <com.google.android.material.bottomnavigation.BottomNavigationView

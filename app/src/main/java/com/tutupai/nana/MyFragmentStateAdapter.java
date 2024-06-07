@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyFragmentStateAdapter extends FragmentStateAdapter {
-
     private final List<Fragment> fragmentList = new ArrayList<>();
 
     public MyFragmentStateAdapter(@NonNull FragmentActivity fragmentActivity) {
@@ -29,5 +28,10 @@ public class MyFragmentStateAdapter extends FragmentStateAdapter {
 
     public void addFragment(Fragment fragment) {
         fragmentList.add(fragment);
+        notifyItemInserted(fragmentList.size() - 1);
+    }
+
+    public Fragment getFragment(int position) {
+        return fragmentList.get(position);
     }
 }

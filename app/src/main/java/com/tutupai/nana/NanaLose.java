@@ -1,6 +1,7 @@
 package com.tutupai.nana;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,10 +23,19 @@ public class NanaLose extends Fragment implements MyRecyclerViewAdapter.AudioPla
     private MediaPlayer mediaPlayer;
     private RecyclerView recyclerView;
     private List<ButtonAudioPairInterface> buttonAudioPairs;
+    private MainActivity mainActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MainActivity) {
+            mainActivity = (MainActivity) context;
+        }
     }
 
     @SuppressLint("MissingInflatedId")
@@ -75,6 +85,14 @@ public class NanaLose extends Fragment implements MyRecyclerViewAdapter.AudioPla
     public void onDestroyView() {
         super.onDestroyView();
         if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+    public void stopAudio() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
         }

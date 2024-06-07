@@ -234,6 +234,7 @@ public class ButtonAudioPairFactory {
         buttonAudioPairs.add(new ButtonAudioPair(R.string.zheyeshiyizhongwangbaoba_zuorenshanliangyidian, R.raw.zheyeshiyizhongwangbaoba_zuorenshanliangyidian));
         buttonAudioPairs.add(new ButtonAudioPair(R.string.zhongguodexiongdijiemeimenhao_woshieluosinana, R.raw.zhongguodexiongdijiemeimenhao_woshieluosinana));
         buttonAudioPairs.add(new ButtonAudioPair(R.string.zhunikaixinkuaile, R.raw.zhunikaixinkuaile));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.jiejiegaotaiguishou, R.raw.jiejiegaotaiguishou));
 
         return buttonAudioPairs;
     }
@@ -250,6 +251,36 @@ public class ButtonAudioPairFactory {
         List<ButtonAudioPairInterface> buttonAudioPairs = new ArrayList<>();
         buttonAudioPairs.add(new ButtonAudioPair(R.string.lovelikefirehead, R.raw.lovelikefirehead));
         buttonAudioPairs.add(new ButtonAudioPair(R.string.lovelikefiremain, R.raw.lovelikefiremain));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.lovelikefireenglish, R.raw.lovelikefireenglish));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.lovelikefiresecondversion, R.raw.lovelikefiresecondversion));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.heatlikeice, R.raw.heatlikeice));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.heatlikeice01, R.raw.heatlikeice01));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.heatlikeice03, R.raw.heatlikeice03));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.russian, R.raw.russian));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.suddenattraction02, R.raw.suddenattraction02));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.wodedouziqiezi, R.raw.wodedouziqiezi));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.haohange, R.raw.haohange));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.zhongxiangquhuozi, R.raw.zhongxiangquhuozi));
+        return buttonAudioPairs;
+    }
+
+    public static List<ButtonAudioPairInterface> createNanaAIButtonAudioPairs() {
+        List<ButtonAudioPairInterface> buttonAudioPairs = new ArrayList<>();
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.aligaduo, R.raw.aligaduo));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.anshihenanlie, R.raw.anshihenanlie));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.dabeizhou, R.raw.dabeizhou));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.dabeizhousanshimiao, R.raw.dabeizhousanshimiao));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.DaDaDa, R.raw.dadada));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.DaDaDa2, R.raw.dadada2));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.daoqian, R.raw.daoqianai));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.guerleyuan, R.raw.guerleyuan));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.laobukepodelianmeng, R.raw.laobukepodelianmeng));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.laobukepodelianmeng2, R.raw.laobukepodelianmeng2));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.lianai, R.raw.lianai));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.wozenmezuonimencainengfangguowo, R.raw.wozenmezuonimencainengfangguowo));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.wudianershichunrenshengban, R.raw.wudianershichunrenshengban));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.wudianershidaibanzou, R.raw.wudianershidaibanzou));
+        buttonAudioPairs.add(new ButtonAudioPair(R.string.xihaiqingge, R.raw.xihaiqingge));
         return buttonAudioPairs;
     }
 }

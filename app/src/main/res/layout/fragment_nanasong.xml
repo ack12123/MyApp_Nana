@@ -3,122 +3,173 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
+    <!-- ScrollView用于垂直滚动 -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- LinearLayout用于垂直排列内部的组件 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- 容器3 -->
-            <androidx.cardview.widget.CardView
+            <!-- 第一个部分 -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/main"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="0dp">
+                android:orientation="vertical"
+                android:padding="6dp">
 
-                <LinearLayout
+                <!-- 第一个标题 -->
+                <TextView
+                    android:id="@+id/toggle_button_nanasing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="6dp">
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:text="@string/nanasing"
+                    android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/toggle_button_nanasing"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:padding="10dp"
-                        android:text="@string/nanasing"
-                        android:textSize="20sp" />
+                <!-- 分割线 -->
+                <View
+                    android:id="@+id/divider_sing"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/darker_gray" />
 
-                    <View
-                        android:id="@+id/divider_sing"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/darker_gray"
-                        android:visibility="invisible"/>
+                <!-- 第一个RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
 
-                    <com.google.android.flexbox.FlexboxLayout
-                        android:id="@+id/button_nanasing"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:alignContent="stretch"
-                        app:alignItems="stretch"
-                        app:flexWrap="wrap"
-                        app:justifyContent="flex_start">
+            </LinearLayout>
 
-                    </com.google.android.flexbox.FlexboxLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- 容器4 -->
-            <androidx.cardview.widget.CardView
+            <!-- 第二个部分 -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/main"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="0dp">
+                android:orientation="vertical"
+                android:padding="6dp">
 
-                <LinearLayout
+                <!-- 第二个标题 -->
+                <TextView
+                    android:id="@+id/toggle_button_nanasong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="6dp">
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:text="@string/nanasong"
+                    android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/toggle_button_nanasong"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:padding="10dp"
-                        android:text="@string/nanasong"
-                        android:textSize="20sp" />
+                <!-- 分割线 -->
+                <View
+                    android:id="@+id/divider_song"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/darker_gray" />
 
-                    <View
-                        android:id="@+id/divider_song"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/darker_gray"
-                        android:visibility="invisible"/>
+                <!-- 第二个RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvButtons2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
 
-                    <com.google.android.flexbox.FlexboxLayout
-                        android:id="@+id/button_nanasong"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:alignContent="stretch"
-                        app:alignItems="stretch"
-                        app:flexWrap="wrap"
-                        app:justifyContent="flex_start">
-                        <!-- 按钮添加到这里 -->
-                    </com.google.android.flexbox.FlexboxLayout>
+            </LinearLayout>
 
-                </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+
+        <!-- 第三个部分 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <!-- 第三个标题 -->
+            <TextView
+                android:id="@+id/toggle_button_nanaai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="10dp"
+                android:text="@string/nanaai"
+                android:textSize="20sp" />
+
+            <!-- 分割线 -->
+            <View
+                android:id="@+id/divider_nanaai"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/darker_gray" />
+
+            <!-- 第二个RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvButtons3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+
+            <!-- 第四个部分 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <!-- 第三个标题 -->
+                <TextView
+                    android:id="@+id/toggle_button_nanawangzhe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:text="@string/nanawangzhe"
+                    android:textSize="20sp" />
+
+                <!-- 分割线 -->
+                <View
+                    android:id="@+id/divider_nanawangzhe"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/darker_gray" />
+
+                <!-- 第二个RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvButtons4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

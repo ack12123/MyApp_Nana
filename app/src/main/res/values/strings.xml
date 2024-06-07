@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">通讯录的英雄们</string>
+    <string name="app_name">英雄语音包</string>
     <string name="app_version">0.0.10.1_beta</string>
     <string name="action_settings">关于</string>
     <!-- Strings used for fragments for navigation -->
@@ -309,6 +309,34 @@
     <string name="zheyeshiyizhongwangbaoba_zuorenshanliangyidian">这也是一种网爆吧 做人善良一点</string>
     <string name="zhongguodexiongdijiemeimenhao_woshieluosinana">中国的兄弟姐妹们好 我是俄罗斯娜娜</string>
     <string name="zhunikaixinkuaile">祝你开心快乐</string>
-
+    <string name="nanaai">AI处理</string>
+    <string name="DaDaDa">DaDaDa</string>
+    <string name="DaDaDa2">DaDaDa2</string>
+    <string name="wudianershidaibanzou">五点二十带伴奏</string>
+    <string name="wudianershichunrenshengban">五点二十纯人声版</string>
+    <string name="anshihenanlie">俺是河南咧</string>
+    <string name="dabeizhou">大悲咒</string>
+    <string name="dabeizhousanshimiao">大悲咒三十秒</string>
+    <string name="guerleyuan">孤儿乐园</string>
+    <string name="wozenmezuonimencainengfangguowo">我怎么做你们才能放过我</string>
+    <string name="laobukepodelianmeng">牢不可破的联盟</string>
+    <string name="laobukepodelianmeng2">牢不可破的联盟2</string>
+    <string name="lianai">莲爱</string>
+    <string name="xihaiqingge">西海情歌</string>
+    <string name="aligaduo">阿里嘎多</string>
+    <string name="heatlikeice03">恨如冰03</string>
+    <string name="heatlikeice01">恨如冰01</string>
+    <string name="heatlikeice">恨如冰</string>
+    <string name="lovelikefireenglish">爱如火英文版</string>
+    <string name="lovelikefiresecondversion">爱如火2.0</string>
+    <string name="russian">俄语练习</string>
+    <string name="suddenattraction02">怦然心动02</string>
+    <string name="wodedouziqiezi">我的豆子茄子呢</string>
+    <string name="haohange">好汉歌</string>
+    <string name="zhongxiangquhuozi">钟祥趣火子</string>
+    <string name="jiejiegaotaiguishou">姐姐高抬贵手让一把我</string>
+    <string name="nanawangzhe">王者荣耀全英雄名称</string>
+    <string name="huyilian">胡艺莲</string>
+    <string name="shirouer">施柔儿</string>
 
 </resources>
