@@ -23,7 +23,6 @@ public class NanaLose extends Fragment implements MyRecyclerViewAdapter.AudioPla
     private MediaPlayer mediaPlayer;
     private RecyclerView recyclerView;
     private List<ButtonAudioPairInterface> buttonAudioPairs;
-    private MainActivity mainActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class NanaLose extends Fragment implements MyRecyclerViewAdapter.AudioPla
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof MainActivity) {
-            mainActivity = (MainActivity) context;
+            MainActivity mainActivity = (MainActivity) context;
         }
     }
 

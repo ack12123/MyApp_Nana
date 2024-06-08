@@ -12,6 +12,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.flexbox.FlexWrap;
+import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -41,6 +44,17 @@ public class SearchNanaActivity extends AppCompatActivity implements MyRecyclerV
         // 初始化 RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rvButtons);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // 使用 FlexboxLayoutManager 替代 LinearLayoutManager
+        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
+        layoutManager.setFlexWrap(FlexWrap.WRAP); // 允许换行
+        layoutManager.setJustifyContent(JustifyContent.FLEX_START); // 按起始位置排列
+        recyclerView.setLayoutManager(layoutManager);
+
+        // 设置自定义的 ItemDecoration
+        int space = 16; // 设置间距大小
+        recyclerView.addItemDecoration(new SpacesItemDecoration(space));
+
 
         // 创建 MyRecyclerViewAdapter 实例
         buttonAdapter = new MyRecyclerViewAdapter(this, this, new ArrayList<>());
